@@ -7,7 +7,7 @@ import { connect } from 'cloudflare:sockets';
 
 // How to generate your own UUID:
 // https://www.uuidgenerator.net/
-let userID = '89b3cbba-e6ac-485a-9481-976a0415eab9';
+let userID = '4c1cfa48-c171-4966-9c0a-20210bffff54';
 
 // https://www.nslookup.io/domains/bpb.yousef.isegaro.com/dns-records/
 const proxyIPs= ['bpb.yousef.isegaro.com'];
@@ -286,8 +286,8 @@ export default {
                         });
 
                     default:
-                        // return new Response('Not found', { status: 404 });
-                        url.hostname = 'www.speedtest.net';
+                        return new Response('Not found', { status: 404 });
+                        url.hostname = 'bestip.cream.us.kg';
                         url.protocol = 'https:';
                         request = new Request(url, request);
                         return await fetch(request);
@@ -1305,7 +1305,7 @@ async function getConfigAddresses(hostName, cleanIPs, enableIPv6) {
     const defaultIPv6 = enableIPv6 ? resolved.ipv6.map((ip) => `[${ip}]`) : []
     return [
         hostName,
-        'www.speedtest.net',
+        'bestip.cream.us.kg',
         ...resolved.ipv4,
         ...defaultIPv6,
         ...(cleanIPs ? cleanIPs.split(',') : [])
@@ -3237,7 +3237,7 @@ async function buildXrayDNSObject (remoteDNS, localDNS, blockAds, bypassIran, by
 
     if (isWorkerLess) {
         const resolvedCloudflare = await resolveDNS('cloudflare.com');
-        const resolvedCLDomain = await resolveDNS('www.speedtest.net.cdn.cloudflare.net');
+        const resolvedCLDomain = await resolveDNS('bestip.cream.us.kg.cdn.cloudflare.net');
         const resolvedCFNS_1 = await resolveDNS('ben.ns.cloudflare.com');
         const resolvedCFNS_2 = await resolveDNS('lara.ns.cloudflare.com');
         dnsObject.hosts['cloudflare-dns.com'] = [
